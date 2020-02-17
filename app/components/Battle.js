@@ -26,7 +26,7 @@ function Instructions() {
           <FaFighterJet className='bg-light' color='#727272' size={140} />
         </li>
         <li>
-          <h3 className='header-sm'>See the winner</h3>
+          <h3 className='header-sm'>See the winners</h3>
           <FaTrophy className='bg-light' color='rgb(255, 215, 0)' size={140} />
         </li>
       </ol>
@@ -41,6 +41,7 @@ class PlayerInput extends React.Component {
     this.state = {
       username: ""
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -126,6 +127,7 @@ export default class Battle extends React.Component {
       playerTwo: null,
       battle: false
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleReset = this.handleReset.bind(this);
   }
@@ -149,6 +151,7 @@ export default class Battle extends React.Component {
     return (
       <React.Fragment>
         <Instructions />
+
         <div className='players-container'>
           <h1 className='center-text header-lg'>Players</h1>
           <div className='row space-around'>
@@ -178,6 +181,7 @@ export default class Battle extends React.Component {
               />
             )}
           </div>
+
           {playerOne && playerTwo && (
             <button
               className='btn dark-btn btn-space'
