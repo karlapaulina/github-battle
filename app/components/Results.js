@@ -8,9 +8,9 @@ import {
   FaCode,
   FaUser
 } from "react-icons/fa";
-
 import Card from "./Card";
 import PropTypes from "prop-types";
+import Loading from "./Loading";
 
 function ProfileList({ profile }) {
   return (
@@ -84,7 +84,7 @@ export default class Results extends React.Component {
   render() {
     const { winner, loser, error, loading } = this.state;
     if (loading === true) {
-      return <p>LOADING</p>;
+      return <Loading text='Battling' />;
     }
 
     if (error) {
