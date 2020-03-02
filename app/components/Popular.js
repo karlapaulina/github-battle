@@ -9,8 +9,9 @@ import {
 } from "react-icons/fa";
 import Card from "./Card";
 import Loading from "./Loading";
+import Tooltip from "./Tooltip";
 
-function LanguagesNav({ selected, onUpdateLanguage }) {
+function LangaugesNav({ selected, onUpdateLanguage }) {
   const languages = ["All", "JavaScript", "Ruby", "Java", "CSS", "Python"];
 
   return (
@@ -19,7 +20,7 @@ function LanguagesNav({ selected, onUpdateLanguage }) {
         <li key={language}>
           <button
             className='btn-clear nav-link'
-            style={language === selected ? { color: "blue" } : null}
+            style={language === selected ? { color: "rgb(187, 46, 31)" } : null}
             onClick={() => onUpdateLanguage(language)}
           >
             {language}
@@ -30,7 +31,7 @@ function LanguagesNav({ selected, onUpdateLanguage }) {
   );
 }
 
-LanguagesNav.propTypes = {
+LangaugesNav.propTypes = {
   selected: PropTypes.string.isRequired,
   onUpdateLanguage: PropTypes.func.isRequired
 };
@@ -59,8 +60,10 @@ function ReposGrid({ repos }) {
             >
               <ul className='card-list'>
                 <li>
-                  <FaUser color='rgb(255, 191, 116' size={22} />
-                  <a href={`https://github.com/${login}`}>{login}</a>
+                  <Tooltip text='Github username'>
+                    <FaUser color='rgb(255, 191, 116)' size={22} />
+                    <a href={`https://github.com/${login}`}>{login}</a>
+                  </Tooltip>
                 </li>
                 <li>
                   <FaStar color='rgb(255, 215, 0)' size={22} />
@@ -96,6 +99,7 @@ export default class Popular extends React.Component {
       repos: {},
       error: null
     };
+
     this.updateLanguage = this.updateLanguage.bind(this);
     this.isLoading = this.isLoading.bind(this);
   }
@@ -119,14 +123,14 @@ export default class Popular extends React.Component {
           }));
         })
         .catch(() => {
-          console.warn("Error fetching respos:", error);
+          console.warn("Error fetching repos: ", error);
+
           this.setState({
-            error: "There was an error fetching the respositories"
+            error: `There was an error fetching the repositories.`
           });
         });
     }
   }
-
   isLoading() {
     const { selectedLanguage, repos, error } = this.state;
 
@@ -137,10 +141,10 @@ export default class Popular extends React.Component {
 
     return (
       <React.Fragment>
-        <LanguagesNav
+        <LangaugesNav
           selected={selectedLanguage}
           onUpdateLanguage={this.updateLanguage}
-        ></LanguagesNav>
+        />
 
         {this.isLoading() && <Loading text='Fetching Repos' />}
 
