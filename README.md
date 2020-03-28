@@ -4,6 +4,8 @@ Utilizing the Github API, users can search the most popular repos in all coding 
 
 Users can also switch between a light interface and a dark interface using the flashlight/lightbulb icon on the top right.
 
+[View live site](https://vigorous-almeida-0e9925.netlify.com)
+
 ![Image](popularRepos.png)
 ![Image](githubBattle.png)
 
